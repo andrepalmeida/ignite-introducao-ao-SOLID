@@ -1,0 +1,47 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "UserX",
+    "description": "Documentação da API de listagem de cadastro de usuários",
+    "version": "1.0.0",
+    "contact": "andrepalmeida01@gmail.com"
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["Usuário"],
+        "summary": "Cadastrar um usuário",
+        "description": "Cadastrar um novo usuário",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Andre",
+                  "email": "andre@email.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuário cadastrado com sucesso"
+          },
+          "400": {
+            "description": "Erro ao cadastrar usuário"
+          }
+        }
+      }
+    }
+  }
+}
