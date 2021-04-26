@@ -41,6 +41,85 @@
             "description": "Erro ao cadastrar usuário"
           }
         }
+      },
+      "get": {
+        "tags": ["Usuário"],
+        "summary": "Listar todos os usuários",
+        "description": "Listagem de todos os usuários cadastrados. Deve ser enviado no header da requisição o id do usuário. A listagem só é permitida para usuários do tipo 'admin'",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "user_id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso"
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          },
+          "400": {
+            "description": "Usuário não tem permissão"
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "tags": ["Usuário"],
+        "summary": "Retornar dados do usuário",
+        "description": "Retorna os dados do usuário cadastrado",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso"
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          }
+        }
+      }
+    },
+    "/users/{user_id}/admin": {
+      "patch": {
+        "tags": ["Usuário"],
+        "summary": "Alterar o usuário para admin",
+        "description": "Altera o usuário informado como admin",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso"
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          }
+        }
       }
     }
   }
